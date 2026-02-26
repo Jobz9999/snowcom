@@ -1,0 +1,10 @@
+<h1>コミュニティ一覧</h1>
+
+<%= link_to '新規作成', new_community_path %>
+
+<% @communities.each do |community| %>
+	<div>
+		<h3><%= community.name %></h3>
+		<p><%= community.description %></p>
+	</div>
+<% end %>

@@ -1,0 +1,20 @@
+<h1>コミュニティ作成</h1>
+
+<%= form_for @community do |f| %>
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+    
+	<div>
+		<%= f.label :description %>
+		<%= f.text_area :description %>
+	</div>
+
+    <div>
+        <%= f.label :is_private %>
+        <%= f.check_box :is_private %>
+    </div>
+
+	<%= f.submit '作成' %>
+<% end %>
