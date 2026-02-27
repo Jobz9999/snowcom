@@ -5,7 +5,7 @@ class CommunitiesController < ApplicationController
         @communities = Community.all
     end
 
-    def show # コミュニティの詳細ページ(現段階では使わない後々使う)
+    def show # コミュニティの詳細ページ
         @community = Community.find(params[:id])
     end
     

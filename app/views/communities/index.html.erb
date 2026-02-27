@@ -4,7 +4,7 @@
 
 <% @communities.each do |community| %>
 	<div>
-		<h3><%= community.name %></h3>
+		<h3><%= link_to community.name, community_path(community) %></h3>
 		<p><%= community.description %></p>
 	</div>
 <% end %>
