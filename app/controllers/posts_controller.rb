@@ -21,7 +21,26 @@ class PostsController < ApplicationController
       redirect_to @community, alert: '投稿を削除できませんでした'
     end
   end
-  
+
+  def edit # 投稿の編集
+    @community = Community.find(params[:community_id])
+    @post = @community.posts.find(params[:id])
+
+    redirect_to community_path(@community) unless @post.user == current_user
+  end
+
+  def update # 投稿の更新
+    @community = Community.find(params[:community_id])
+    @post = @community.posts.find(params[:id])
+
+    if @post.user == current_user
+      @post.update(post_params)
+      redirect_to @community, notice: '投稿を更新しました'
+    else
+      render :edit, notice: '投稿を更新できませんでした'
+    end
+  end
+
   private
 
   def post_params # 投稿の作成時に必要なパラメータ

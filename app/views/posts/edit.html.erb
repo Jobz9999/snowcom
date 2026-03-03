@@ -1,0 +1,13 @@
+<h1>投稿を編集</h1>
+
+<%= form_with model: [@community, @post], local: true do |f| %>
+    <div>
+        <%= f.text_area :content, rows: 4, placeholder: "投稿内容を入力．．．" %>
+    </div>
+
+    <div>
+        <%= f.submit '更新する' %>
+    </div>
+<% end %>
+
+<%= link_to '戻る', community_path(@community) %>
