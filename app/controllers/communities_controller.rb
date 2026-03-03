@@ -6,7 +6,8 @@ class CommunitiesController < ApplicationController
     end
 
     def show # コミュニティの詳細ページ
-        @community = Community.find(params[:id])
+        @community = Community.find(params[:id]) 
+        @post = Post.new # 投稿の新規作成フォームを表示するために必要
     end
     
     def new # コミュニティの新規作成ページ

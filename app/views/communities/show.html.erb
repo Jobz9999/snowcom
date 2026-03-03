@@ -2,5 +2,21 @@
 
 <p><%= @community.description %></p>
 
+<h2>投稿</h2>
+
+<%= form_with model: [@community, @post], local: true do |f| %>
+			<%= f.text_area :content, rows: 4, placeholder: "投稿内容を入力．．．" %>
+			<%= f.submit '投稿' %>		
+<% end %>
+
+<h2>投稿一覧</h2>
+
+<% @community.posts.each do |post| %>
+	<p>
+	 <strong><%= post.user.email %></strong><br>
+	 <%= post.content %>
+	</p>
+<% end %>
+
 <%= link_to '編集', edit_community_path(@community) %>
 <%= link_to '一覧に戻る', communities_path %>
