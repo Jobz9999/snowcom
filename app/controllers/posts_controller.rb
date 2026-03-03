@@ -9,6 +9,19 @@ class PostsController < ApplicationController
       render 'communities/show' 
     end
   end
+
+  def destroy # 投稿の削除
+    @community = Community.find(params[:community_id]) 
+    @post = @community.posts.find(params[:id])
+
+    if @post.user == current_user
+      @post.destroy
+      redirect_to @community, notice: '投稿を削除しました'
+    else
+      redirect_to @community, alert: '投稿を削除できませんでした'
+    end
+  end
+  
   private
 
   def post_params # 投稿の作成時に必要なパラメータ
