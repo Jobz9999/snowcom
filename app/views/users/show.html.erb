@@ -1,0 +1,26 @@
+<h1><%= @user.email %>のマイページ</h1>
+
+<h2>自分の投稿</h2>
+
+<%if @posts.any? %>
+    <ul>
+        <% @posts.each do |post| %>
+            <li><%= post.content %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>投稿はありません</p>
+<% end %>
+
+<h2>参加しているコミュニティ</h2>
+
+<% if @communities.any? %>
+    <ul>
+        <% @communities.each do |community| %>
+            <li><%= community.name %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>参加しているコミュニティはありません</p>
+<% end %>
+
