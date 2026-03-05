@@ -18,16 +18,25 @@
 
       <% if user_signed_in? %>
         <%= link_to 'マイページ', user_path(current_user) %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <%= link_to 'ログアウト', destroy_user_session_path,data: { turbo_method: :delete } %>  
       <% else %>
         <%= link_to 'ログイン', new_user_session_path %>
         <%= link_to '新規登録', new_user_registration_path %>
       <% end %>
     </header>
+
+    <% if notice %> 
+      <p style="color: green;"><%= notice %></p>
+    <<% end %>
+
+    <% if alert %>
+      <p style="color: red;"><%= alert %></p>
+    <% end %>
+
     <main>
       <%= yield %>
     </main>
-    
+
     <footer>
       <p>Copyright © 2026 Snowcom</p>
     </footer>

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'memberships/create'
-  get 'memberships/destroy'
-  get 'users/show'
-  get 'posts/create'
   devise_for :users
   root to: "homes#index"
 
