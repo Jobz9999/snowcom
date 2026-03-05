@@ -26,6 +26,15 @@
 		<%= post.content %>
 	<br>
 	<small>
+		<% if user_signed_in? %>
+			<% if post.liked_by?(current_user) %>
+				<%= link_to "♥",community_post_like_path(@community, post),data: { turbo_method: :delete },class: "like-button liked" %>
+			<% else %>
+				<%= link_to "♡",community_post_like_path(@community, post),data: { turbo_method: :post },class: "like-button" %>
+			<% end %>
+			<% end %>
+		<span><%= post.likes.count %>いいね</span>
+	
 		<%= post.created_at.strftime('%Y-%m-%d %H:%M') %>
 	</small>
 	

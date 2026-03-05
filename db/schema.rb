@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_05_091041) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_05_162201) do
   create_table "communities", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_05_091041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -55,6 +64,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_05_091041) do
   end
 
   add_foreign_key "communities", "users"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
   add_foreign_key "memberships", "communities"
   add_foreign_key "memberships", "users"
   add_foreign_key "posts", "communities"

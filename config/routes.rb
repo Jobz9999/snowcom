@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: "homes#index"
 
   resources :communities do
-    resources :posts, only: [:create, :destroy, :edit, :update]
+    resources :posts, only: [:create, :destroy, :edit, :update] do #コミュニティにネスト
+      resource :like, only: [:create, :destroy]  #postにネスト
+    end
+
     resource :membership, only: [:create, :destroy] 
   end
 
