@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_02_27_085501) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_04_125446) do
   create_table "communities", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -19,6 +19,16 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_27_085501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "community_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_memberships_on_community_id"
+    t.index ["user_id", "community_id"], name: "index_memberships_on_user_id_and_community_id", unique: true
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -44,6 +54,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_02_27_085501) do
   end
 
   add_foreign_key "communities", "users"
+  add_foreign_key "memberships", "communities"
+  add_foreign_key "memberships", "users"
   add_foreign_key "posts", "communities"
   add_foreign_key "posts", "users"
 end

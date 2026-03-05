@@ -2,6 +2,14 @@
 
 <p><%= @community.description %></p>
 
+<% if user_signed_in? %>
+	<% if @community.members.exists?(current_user.id) %>
+		<%= button_to 'コミュニティから退出', community_membership_path(@community), method: :delete %>
+	<% else %>
+		<%= button_to 'コミュニティに参加', community_membership_path(@community), method: :post %>
+	<% end %>
+<% end %>
+
 <h2>投稿</h2>
 
 <%= form_with model: [@community, @post], local: true do |f| %>

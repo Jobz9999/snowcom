@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'memberships/create'
+  get 'memberships/destroy'
   get 'users/show'
   get 'posts/create'
   devise_for :users
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :communities do
     resources :posts, only: [:create, :destroy, :edit, :update]
+    resource :membership, only: [:create, :destroy] 
   end
 
   resources :users, only: [:show]
