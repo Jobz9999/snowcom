@@ -14,6 +14,9 @@
 
 <%= form_with model: [@community, @post], local: true do |f| %>
 			<%= f.text_area :content, rows: 4, placeholder: "投稿内容を入力．．．" %>
+			<br>
+			<%= f.file_field :image %>
+			<br>
 			<%= f.submit '投稿' %>		
 <% end %>
 
@@ -25,6 +28,12 @@
 		<br>
 		<%= post.content %>
 	<br>
+
+	<% if post.image.attached? %>
+		<%= image_tag post.image.variant(resize_to_limit: [250, 250]) %>
+		<br>
+	<% end %>
+
 	<small>
 		<% if user_signed_in? %>
 			<% if post.liked_by?(current_user) %>

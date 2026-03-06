@@ -44,6 +44,6 @@ class PostsController < ApplicationController
   private
 
   def post_params # 投稿の作成時に必要なパラメータ
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :image)
   end
 end
