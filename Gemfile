@@ -73,3 +73,7 @@ gem "image_processing", "~> 1.2"
 gem "ruby-vips"
 
 gem 'kaminari'
+
+gem 'bootstrap', '~> 5.3'
+
+gem 'sassc-rails'
