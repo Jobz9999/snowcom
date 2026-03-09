@@ -1,5 +1,10 @@
 <h1>コミュニティ一覧</h1>
 
+<%= form_with url: communities_path, method: :get, local: true do |f| %>
+	<%= f.text_field :keyword, placeholder: "コミュニティを検索" %>
+	<%= f.submit "検索" %>
+<% end %>
+
 <%= link_to '新規作成', new_community_path %>
 
 <% @communities.each do |community| %>
