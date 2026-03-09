@@ -11,6 +11,7 @@ class CommunitiesController < ApplicationController
 
     def show # コミュニティの詳細ページ
         @community = Community.find(params[:id]) 
+        @posts = @community.posts.includes(:user).order(created_at: :desc).page(params[:page]) #ページネーション
         @post = Post.new # 投稿の新規作成フォームを表示するために必要
     end
     

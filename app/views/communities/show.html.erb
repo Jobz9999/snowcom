@@ -22,7 +22,7 @@
 
 <h2>投稿一覧</h2>
 
-<% @community.posts.each do |post| %>
+<% @posts.each do |post| %>
 	<div class="post">
 		<strong><%= post.user.email %></strong>
 		<br>
@@ -58,6 +58,8 @@
 	<% end %>
 	</div>
 <% end %>
+
+<%= paginate @posts %>
 
 <br>
 <%= link_to '一覧に戻る', communities_path %>
