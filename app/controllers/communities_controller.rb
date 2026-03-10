@@ -2,10 +2,14 @@ class CommunitiesController < ApplicationController
     before_action :authenticate_user!
 
     def index # コミュニティの一覧ページ
+        @communities = Community.all
+      
         if params[:keyword].present?
-            @communities = Community.where("name LIKE?", "%#{params[:keyword]}%")
-        else
-            @communities = Community.all
+          @communities = @communities.where("name LIKE ?", "%#{params[:keyword]}%")
+        end
+      
+        if params[:category].present?
+          @communities = @communities.where(category: params[:category])
         end
     end
 
@@ -32,6 +36,6 @@ class CommunitiesController < ApplicationController
     private
 
     def community_params # コミュニティの作成時に必要なパラメータ
-        params.require(:community).permit(:name, :description)
+        params.require(:community).permit(:name, :description, :category)
     end
 end

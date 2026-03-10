@@ -11,6 +11,12 @@
 		<%= f.text_area :description %>
 	</div>
 
+	<div>
+  		<%= f.label :category, "カテゴリ" %>
+ 		<%= f.select :category,  Community.categories.keys.map { |k| [k.humanize, k] },
+		 { include_blank: "選択してください" } %>
+	</div>
+
     <div>
         <%= f.label :is_private %>
         <%= f.check_box :is_private %>

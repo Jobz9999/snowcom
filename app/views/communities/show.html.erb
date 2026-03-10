@@ -1,5 +1,7 @@
 <h1><%= @community.name %></h1>
 
+<p>カテゴリ: <%= @community.category_i18n if @community.category.present? %></p>
+
 <p><%= @community.description %></p>
 
 <% if user_signed_in? %>
@@ -37,11 +39,19 @@
 	<small>
 		<% if user_signed_in? %>
 			<% if post.liked_by?(current_user) %>
-				<%= link_to "♥",community_post_like_path(@community, post),data: { turbo_method: :delete },class: "like-button liked" %>
+				<%= button_to "♥",
+					community_post_like_path(@community, post),
+					method: :delete,
+					class: "like-button liked",
+					form: { class: "d-inline" } %>
 			<% else %>
-				<%= link_to "♡",community_post_like_path(@community, post),data: { turbo_method: :post },class: "like-button" %>
+				<%= button_to "♡",
+					community_post_like_path(@community, post),
+					method: :post,
+					class: "like-button",
+					form: { class: "d-inline" } %>
 			<% end %>
-			<% end %>
+		<% end %>
 		<span><%= post.likes.count %>いいね</span>
 	
 		<%= post.created_at.strftime('%Y-%m-%d %H:%M') %>

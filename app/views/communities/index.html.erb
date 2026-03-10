@@ -2,6 +2,12 @@
 
 <%= form_with url: communities_path, method: :get, local: true do |f| %>
 	<%= f.text_field :keyword, placeholder: "コミュニティを検索" %>
+
+	<%= f.select :category,
+		Community.categories.keys.map { |k| [k.humanize, k] },
+		{ include_blank: "すべて" },
+		{ selected: params[:category] } %>
+		
 	<%= f.submit "検索" %>
 <% end %>
 
@@ -10,6 +16,7 @@
 <% @communities.each do |community| %>
 	<div>
 		<h3><%= link_to community.name, community_path(community) %></h3>
+		<span>(<%= community.category %>)</span>
 		<p><%= community.description %></p>
 	</div>
 <% end %>
