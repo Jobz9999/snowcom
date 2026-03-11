@@ -33,6 +33,26 @@ class CommunitiesController < ApplicationController
         end
     end
 
+    def edit
+        @community = Community.find(params[:id])
+      end
+      
+    def update
+      @community = Community.find(params[:id])
+    
+      if @community.update(community_params)
+        redirect_to @community, notice: "コミュニティ情報を更新しました"
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @community = Community.find(params[:id])
+      @community.destroy
+      redirect_to communities_path, notice: "コミュニティを削除しました"
+    end
+
     private
 
     def community_params # コミュニティの作成時に必要なパラメータ

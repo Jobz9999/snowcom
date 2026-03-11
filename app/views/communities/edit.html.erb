@@ -1,0 +1,24 @@
+<h1>コミュニティ編集</h1>
+
+<%= form_with model: @community, local: true do |f| %>
+
+  <div>
+    <%= f.label :name, "コミュニティ名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description, "説明" %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :category, "カテゴリ" %>
+    <%= f.select :category,
+        Community.categories.keys.map { |k| [k.humanize, k] },
+        include_blank: "選択してください" %>
+  </div>
+
+  <%= f.submit "更新" %>
+
+<% end %>
