@@ -25,10 +25,10 @@
 
             <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
 
-            <%= button_to "ログアウト",
+            <%= link_to "ログアウト",
                 destroy_user_session_path,
-                method: :delete,
-                class: "btn btn-outline-light ms-2" %>
+                data: { turbo_method: :delete },
+                class: "nav-link" %>
           
           <% else %>
             <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
