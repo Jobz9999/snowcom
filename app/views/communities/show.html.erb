@@ -54,13 +54,15 @@
 					<%= button_to "♥",
 						community_post_like_path(@community, post),
 						method: :delete,
-						class: "like-button liked",
+						class: "btn btn-link p-0 like-button liked",
 						form: { class: "d-inline" } %>
+
 				<% else %>
+
 					<%= button_to "♡",
 						community_post_like_path(@community, post),
 						method: :post,
-						class: "like-button",
+						class: "btn btn-link p-0 like-button",
 						form: { class: "d-inline" } %>
 				<% end %>
 			<% end %>
