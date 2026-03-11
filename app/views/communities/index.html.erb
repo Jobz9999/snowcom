@@ -13,10 +13,34 @@
 
 <%= link_to '新規作成', new_community_path %>
 
-<% @communities.each do |community| %>
-	<div>
-		<h3><%= link_to community.name, community_path(community) %></h3>
-		<span>(<%= community.category %>)</span>
-		<p><%= community.description %></p>
-	</div>
-<% end %>
+<div class="row">
+	<% @communities.each do |community| %>
+		<div class="col-md-4 mb-3">
+			<div class="card h-100">	
+				<div class="card-body">
+	
+					<h5 class="card-title">
+						<%= community.name %>
+					</h5>
+			
+					<h6 class="card-subtitle mb-2 text-muted">
+						<%= community.category %>
+					</h6>
+			
+					<p class="card-text">
+						<%= community.description %>
+					</p>
+
+					<p>
+						<%= community.memberships.count %>人参加
+					</p>
+			
+					<%= link_to "コミュニティを見る",
+						community_path(community),
+						class: "btn btn-primary" %>
+			
+				</div>	
+			</div>
+		</div>	
+	<% end %>  
+</div>
