@@ -41,44 +41,43 @@
 		<strong><%= post.user.email %></strong>
 		<br>
 		<%= post.content %>
-	<br>
-
-	<% if post.image.attached? %>
-		<%= image_tag post.image.variant(resize_to_limit: [250, 250]) %>
 		<br>
-	<% end %>
 
-	<small>
-		<% if user_signed_in? %>
-			<% if post.liked_by?(current_user) %>
-				<%= button_to "♥",
-					community_post_like_path(@community, post),
-					method: :delete,
-					class: "like-button liked",
-					form: { class: "d-inline" } %>
-			<% else %>
-				<%= button_to "♡",
-					community_post_like_path(@community, post),
-					method: :post,
-					class: "like-button",
-					form: { class: "d-inline" } %>
-			<% end %>
+		<% if post.image.attached? %>
+			<%= image_tag post.image.variant(resize_to_limit: [250, 250]) %>
+			<br>
 		<% end %>
-		<span><%= post.likes.count %>いいね</span>
-	
-		<%= post.created_at.strftime('%Y-%m-%d %H:%M') %>
-	</small>
-	
-	<% if post.user == current_user %> 
-	  <br>
 
-		<%= link_to '編集', edit_community_post_path(@community, post) %>
+		<small>
+			<% if user_signed_in? %>
+				<% if post.liked_by?(current_user) %>
+					<%= button_to "♥",
+						community_post_like_path(@community, post),
+						method: :delete,
+						class: "like-button liked",
+						form: { class: "d-inline" } %>
+				<% else %>
+					<%= button_to "♡",
+						community_post_like_path(@community, post),
+						method: :post,
+						class: "like-button",
+						form: { class: "d-inline" } %>
+				<% end %>
+			<% end %>
+			<span><%= post.likes.count %>いいね</span>
+		
+			<%= post.created_at.strftime('%Y-%m-%d %H:%M') %>
+		</small>
+		
+		<% if post.user == current_user %> 
+		<br>
+			<%= link_to '編集', edit_community_post_path(@community, post) %>
 
-		<%= button_to '削除',
-			community_post_path(@community, post),
-			method: :delete,
-			form: { data: { turbo_confirm: '本当に削除しますか？' }, class: "d-inline" } %>
-	<% end %>
+			<%= button_to '削除',
+				community_post_path(@community, post),
+				method: :delete,
+				form: { data: { turbo_confirm: '本当に削除しますか？' }, class: "d-inline" } %>
+		<% end %>
 	</div>
 <% end %>
 
