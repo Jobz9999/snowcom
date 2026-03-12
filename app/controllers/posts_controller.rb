@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @community = Community.find(params[:community_id]) 
     @post = @community.posts.find(params[:id])
 
-    if @post.user == current_user
+    if @post.user == current_user || @community.user == current_user
       @post.destroy
       redirect_to @community, notice: '投稿を削除しました'
     else
