@@ -57,53 +57,53 @@
 
   <% @posts.each do |post| %>
     <div class="card shadow-sm mb-3 post">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <strong class="text-break"><%= post.user.email %></strong>
-          <small class="text-muted"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></small>
-        </div>
+			<div class="card-body">
+				<div class="d-flex justify-content-between align-items-start mb-2">
+					<strong class="text-break"><%= post.user.email %></strong>
+					<small class="text-muted"><%= post.created_at.strftime('%Y-%m-%d %H:%M') %></small>
+				</div>
 
-        <p class="card-text text-break mb-2"><%= post.content %></p>
+				<p class="card-text text-break mb-2"><%= post.content %></p>
 
-        <% if post.image.attached? %>
-          <div class="mb-2">
-            <%= image_tag post.image.variant(resize_to_limit: [250, 250]), class: "img-fluid rounded" %>
-          </div>
-        <% end %>
-
-        <div class="d-flex flex-wrap align-items-center gap-2 small">
-          <% if user_signed_in? %>
-            <% if post.liked_by?(current_user) %>
-              <%= button_to "♥",
-                  community_post_like_path(@community, post),
-                  method: :delete,
-                  class: "btn btn-link p-0 like-button liked text-danger",
-                  form: { class: "d-inline" } %>
-            <% else %>
-              <%= button_to "♡",
-                  community_post_like_path(@community, post),
-                  method: :post,
-                  class: "btn btn-link p-0 like-button text-muted",
-                  form: { class: "d-inline" } %>
-            <% end %>
-          <% end %>
-          <span class="text-muted"><%= post.likes.count %> いいね</span>
-
-          <% if post.user == current_user || @community.user == current_user %>
-            <span class="ms-2">
-			 	<% if post.user == current_user %>
-              		<%= link_to '編集', edit_community_post_path(@community, post), class: "text-decoration-none" %>
+				<% if post.image.attached? %>
+					<div class="mb-2">
+						<%= image_tag post.image.variant(resize_to_limit: [250, 250]), class: "img-fluid rounded" %>
+					</div>
 				<% end %>
-				
-              <%= button_to '削除',
-                  community_post_path(@community, post),
-                  method: :delete,
-                  form: { data: { turbo_confirm: '本当に削除しますか？' }, class: "d-inline" },
-                  class: "btn btn-link p-0 text-danger text-decoration-none" %>
-            </span>
-          <% end %>
-        </div>
-      </div>
+
+				<div class="d-flex flex-wrap align-items-center gap-2 small">
+					<% if user_signed_in? %>
+						<% if post.liked_by?(current_user) %>
+							<%= button_to "♥",
+									community_post_like_path(@community, post),
+									method: :delete,
+									class: "btn btn-link p-0 like-button liked text-danger",
+									form: { class: "d-inline" } %>
+						<% else %>
+							<%= button_to "♡",
+									community_post_like_path(@community, post),
+									method: :post,
+									class: "btn btn-link p-0 like-button text-muted",
+									form: { class: "d-inline" } %>
+						<% end %>
+					<% end %>
+				<span class="text-muted"><%= post.likes.count %> いいね</span>
+
+					<% if post.user == current_user || @community.user == current_user %>
+						<span class="ms-2">
+							<% if post.user == current_user %>
+								<%= link_to '編集', edit_community_post_path(@community, post), class: "text-decoration-none" %>
+							<% end %>
+
+						<%= button_to '削除',
+								community_post_path(@community, post),
+								method: :delete,
+								form: { data: { turbo_confirm: '本当に削除しますか？' }, class: "d-inline" },
+								class: "btn btn-link p-0 text-danger text-decoration-none" %>
+						</span>
+					<% end %>
+				</div>
+			</div>
     </div>
   <% end %>
 
