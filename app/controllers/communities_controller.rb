@@ -17,6 +17,10 @@ class CommunitiesController < ApplicationController
         @community = Community.find(params[:id]) 
         @posts = @community.posts.includes(:user).order(created_at: :desc).page(params[:page]) #ページネーション
         @post = Post.new # 投稿の新規作成フォームを表示するために必要
+
+        if @community.user == current_user && @community.approval_required?
+          @pending_memberships = @community.memberships.pending.includes(:user).order(created_at: :asc)
+        end
     end
     
     def new # コミュニティの新規作成ページ
@@ -56,6 +60,6 @@ class CommunitiesController < ApplicationController
     private
 
     def community_params # コミュニティの作成時に必要なパラメータ
-        params.require(:community).permit(:name, :description, :category)
+        params.require(:community).permit(:name, :description, :category, :approval_required)
     end
 end

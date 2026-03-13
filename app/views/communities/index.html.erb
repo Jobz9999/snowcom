@@ -41,7 +41,14 @@
           <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-start justify-content-between gap-2">
               <h2 class="h5 card-title mb-1"><%= community.name %></h2>
-              <span class="badge text-bg-light border"><%= community.category.to_s.humanize %></span>
+              <div class="d-flex flex-wrap gap-1 justify-content-end">
+                <span class="badge text-bg-light border"><%= community.category.to_s.humanize %></span>
+                <% if community.approval_required? %>
+                  <span class="badge text-bg-warning">承認制</span>
+                <% else %>
+                  <span class="badge text-bg-success">自由参加</span>
+                <% end %>
+              </div>
             </div>
 
             <p class="card-text text-muted mb-3"><%= community.description %></p>

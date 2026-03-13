@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_10_192039) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_13_045510) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_10_192039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category"
+    t.boolean "approval_required"
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
@@ -64,6 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_10_192039) do
     t.integer "community_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
     t.index ["community_id"], name: "index_memberships_on_community_id"
     t.index ["user_id", "community_id"], name: "index_memberships_on_user_id_and_community_id", unique: true
     t.index ["user_id"], name: "index_memberships_on_user_id"

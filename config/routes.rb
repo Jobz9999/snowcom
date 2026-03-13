@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     end
 
     resource :membership, only: [:create, :destroy] 
+    resources :memberships, only: [] do
+      member do
+        patch :approve
+        delete :reject
+      end
+    end
   end
 
   resources :users, only: [:show, :edit, :update]
