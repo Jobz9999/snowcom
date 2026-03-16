@@ -19,7 +19,7 @@
         <div class="mb-3">
           <%= f.label :category_id, "カテゴリ", class: "form-label" %>
           <%= f.select :category_id,
-              Category.order(:name).pluck(:name, :id),
+              Category.order(:id).pluck(:name, :id),
               { include_blank: "選択してください" },
               class: "form-select" %>
         </div>

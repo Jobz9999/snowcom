@@ -22,7 +22,7 @@
     <div class="col-12 col-md-3">
       <%= f.label :category_id, "カテゴリ", class: "form-label visually-hidden" %>
       <%= f.select :category_id,
-        Category.order(:name).pluck(:name, :id),
+        Category.order(:id).pluck(:name, :id),
         { include_blank: "すべて", selected: params[:category_id] },
         { class: "form-select" } %>
     </div>
@@ -43,7 +43,7 @@
               <h2 class="h5 card-title mb-1"><%= community.name %></h2>
               <div class="d-flex flex-wrap gap-1 justify-content-end">
                 <% if community.category.present? %>
-                  <span class="badge text-bg-light border"><%= community.category.name %></span>
+                  <span class="badge bg-secondary"><%= community.category.name %></span>
                 <% end %>
                 <% if community.approval_required? %>
                   <span class="badge text-bg-warning">承認制</span>
