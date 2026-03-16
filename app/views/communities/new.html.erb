@@ -17,9 +17,9 @@
         </div>
 
         <div class="mb-3">
-          <%= f.label :category, "カテゴリ", class: "form-label" %>
-          <%= f.select :category,
-              Community.categories.keys.map { |k| [k, k] },
+          <%= f.label :category_id, "カテゴリ", class: "form-label" %>
+          <%= f.select :category_id,
+              Category.order(:name).pluck(:name, :id),
               { include_blank: "選択してください" },
               class: "form-select" %>
         </div>

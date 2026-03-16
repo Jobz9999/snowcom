@@ -4,10 +4,12 @@ one:
   name: MyString
   description: MyText
   user: one
+  category: one
   is_private: false
 
 two:
   name: MyString
   description: MyText
   user: two
+  category: two
   is_private: false

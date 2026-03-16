@@ -20,10 +20,10 @@
     </div>
 
     <div class="col-12 col-md-3">
-      <%= f.label :category, "カテゴリ", class: "form-label visually-hidden" %>
-      <%= f.select :category,
-        Community.categories.keys.map { |k| [k.humanize, k] },
-        { include_blank: "すべて", selected: params[:category] },
+      <%= f.label :category_id, "カテゴリ", class: "form-label visually-hidden" %>
+      <%= f.select :category_id,
+        Category.order(:name).pluck(:name, :id),
+        { include_blank: "すべて", selected: params[:category_id] },
         { class: "form-select" } %>
     </div>
 
@@ -42,7 +42,9 @@
             <div class="d-flex align-items-start justify-content-between gap-2">
               <h2 class="h5 card-title mb-1"><%= community.name %></h2>
               <div class="d-flex flex-wrap gap-1 justify-content-end">
-                <span class="badge text-bg-light border"><%= community.category.to_s.humanize %></span>
+                <% if community.category.present? %>
+                  <span class="badge text-bg-light border"><%= community.category.name %></span>
+                <% end %>
                 <% if community.approval_required? %>
                   <span class="badge text-bg-warning">承認制</span>
                 <% else %>

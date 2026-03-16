@@ -8,8 +8,8 @@ class CommunitiesController < ApplicationController
           @communities = @communities.where("name LIKE ?", "%#{params[:keyword]}%")
         end
       
-        if params[:category].present?
-          @communities = @communities.where(category: params[:category])
+        if params[:category_id].present?
+          @communities = @communities.where(category_id: params[:category_id])
         end
     end
 
@@ -60,6 +60,6 @@ class CommunitiesController < ApplicationController
     private
 
     def community_params # コミュニティの作成時に必要なパラメータ
-        params.require(:community).permit(:name, :description, :category, :approval_required)
+        params.require(:community).permit(:name, :description, :category_id, :approval_required)
     end
 end
