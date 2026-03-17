@@ -48,13 +48,12 @@ class PostsController < ApplicationController
   end
 
   def require_approved_member_for_posting!
-    return unless @community.approval_required?
     return if @community.user == current_user
 
     membership = @community.memberships.find_by(user: current_user)
     return if membership&.approved?
 
-    redirect_to @community, alert: '承認制コミュニティでは参加ユーザーのみ投稿できます'
+    redirect_to @community, alert: '参加していないコミュニティには投稿できません'
   end
 
   def post_params # 投稿の作成時に必要なパラメータ

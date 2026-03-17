@@ -82,7 +82,7 @@
     <div class="card-body">
       <h2 class="h5 card-title mb-3">投稿</h2>
       <% membership = user_signed_in? ? @community.memberships.find_by(user: current_user) : nil %>
-      <% can_post = !@community.approval_required? || @community.user == current_user || membership&.approved? %>
+      <% can_post = @community.user == current_user || membership&.approved? %>
 
       <% if can_post %>
         <%= form_with model: [@community, @post], local: true do |f| %>
@@ -99,7 +99,7 @@
         <% end %>
       <% else %>
         <div class="alert alert-warning mb-0">
-          承認制コミュニティでは参加（承認）後に投稿できます。
+          コミュニティに参加後、投稿できます。
         </div>
       <% end %>
     </div>
