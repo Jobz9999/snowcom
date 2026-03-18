@@ -1,51 +1,56 @@
-<div class="mx-auto" style="max-width: 600px;">
-  <div class="card shadow-sm">
-    <div class="card-body">
+<% content_for :body_class, "communities-new" %>
 
-      <h1 class="h4 mb-4">コミュニティ作成</h1>
+<div class="container py-5 d-flex justify-content-center">
+  <div class="w-100" style="max-width: 600px;">
+    
+    <div class="card shadow-sm">
+      <div class="card-body">
 
-      <%= form_with model: @community, local: true do |f| %>
+        <h1 class="h4 mb-4 text-center">コミュニティ作成</h1>
 
-        <div class="mb-3">
-          <%= f.label :name, "コミュニティ名", class: "form-label" %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
+        <%= form_with model: @community, local: true do |f| %>
 
-        <div class="mb-3">
-          <%= f.label :description, "説明", class: "form-label" %>
-          <%= f.text_area :description, rows: 4, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :category_id, "カテゴリ", class: "form-label" %>
-          <%= f.select :category_id,
-              Category.order(:id).pluck(:name, :id),
-              { include_blank: "選択してください" },
-              class: "form-select" %>
-        </div>
-
-        <div class="mb-3">
-          <%= f.label :approval_required, "参加方法", class: "form-label d-block" %>
-
-          <div class="form-check">
-            <%= f.radio_button :approval_required, false, id: "community_approval_required_false", class: "form-check-input" %>
-            <%= f.label :approval_required_false, "自由参加（誰でもすぐ参加できる）", class: "form-check-label" %>
+          <div class="mb-3">
+            <%= f.label :name, "コミュニティ名", class: "form-label" %>
+            <%= f.text_field :name, class: "form-control" %>
           </div>
 
-          <div class="form-check">
-            <%= f.radio_button :approval_required, true, id: "community_approval_required_true", class: "form-check-input" %>
-            <%= f.label :approval_required_true, "承認制（管理者の承認が必要）", class: "form-check-label" %>
+          <div class="mb-3">
+            <%= f.label :description, "説明", class: "form-label" %>
+            <%= f.text_area :description, rows: 4, class: "form-control" %>
           </div>
-        </div>
-        
 
-        <div class="mt-4">
-          <%= f.submit "作成", class: "btn btn-primary" %>
-          <%= link_to "戻る", communities_path, class: "btn btn-outline-secondary ms-2" %>
-        </div>
+          <div class="mb-3">
+            <%= f.label :category_id, "カテゴリ", class: "form-label" %>
+            <%= f.select :category_id,
+                Category.order(:id).pluck(:name, :id),
+                { include_blank: "選択してください" },
+                class: "form-select" %>
+          </div>
 
-      <% end %>
+          <div class="mb-3">
+            <%= f.label :approval_required, "参加方法", class: "form-label d-block" %>
 
+            <div class="form-check">
+              <%= f.radio_button :approval_required, false, id: "community_approval_required_false", class: "form-check-input" %>
+              <%= f.label :approval_required_false, "自由参加（誰でもすぐ参加できる）", class: "form-check-label" %>
+            </div>
+
+            <div class="form-check">
+              <%= f.radio_button :approval_required, true, id: "community_approval_required_true", class: "form-check-input" %>
+              <%= f.label :approval_required_true, "承認制（管理者の承認が必要）", class: "form-check-label" %>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <%= f.submit "作成", class: "btn btn-primary" %>
+            <%= link_to "戻る", communities_path, class: "btn btn-outline-secondary ms-2" %>
+          </div>
+
+        <% end %>
+
+      </div>
     </div>
+
   </div>
 </div>
