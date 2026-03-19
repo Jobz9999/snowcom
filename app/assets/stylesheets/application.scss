@@ -15,3 +15,38 @@
  */
 
  @import "bootstrap";
+
+ .cover {
+  height: 100vh;
+  color: white;
+  position: relative;
+}
+
+/* 背景を少し暗く */
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* 中身を前に出す */
+.cover .content-box {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+  }

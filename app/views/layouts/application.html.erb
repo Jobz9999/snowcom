@@ -38,7 +38,7 @@
       </div>
     </nav>
     
-    <div class="container mt-3">
+    <div class="<%= content_for?(:full_width) ? '' : 'container mt-3' %>">
 
       <% if notice %>
         <div class="alert alert-success">
@@ -53,7 +53,7 @@
       <% end %>
     </div>
 
-    <main class="container mt-4">
+    <main class="<%= content_for?(:full_width) ? '' : 'container mt-4' %>">
       <%= yield %>
     </main>
 
