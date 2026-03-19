@@ -50,3 +50,10 @@ html, body {
   main {
     flex: 1;
   }
+
+/* 背景画像ページでは footer の上マージンによる白帯を防ぐ */
+body.home-page footer,
+body[class^="communities-"] footer,
+body[class^="users-"] footer {
+  margin-top: 0 !important;
+}

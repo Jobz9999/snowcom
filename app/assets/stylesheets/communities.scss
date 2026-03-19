@@ -1,21 +1,33 @@
 .communities-index {
-  background-image: url("community-bg.jpg");
+  background-image: image-url("community-bg.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
 }
 
 .communities-new {
-  background-image: url("community-new.jpg");
+  background-image: image-url("community-new.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
 }
 
 .communities-show {
-  background-image: url("community-show.jpg"); // 好きな画像
+  background-image: image-url("community-show.jpg"); 
   background-size: cover;
-  background-position: center;
+  background-position: center top;
+  background-repeat: no-repeat;
   min-height: 100vh;
+  background-attachment: fixed;
 }
-  
+
+.communities-edit {
+  background-image: image-url("community-edit.jpg"); 
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-attachment: fixed;
+}

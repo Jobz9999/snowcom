@@ -41,7 +41,19 @@
 # 利用方法
 
 # 機能一覧
-ユーザー機能
-コミュニティ機能
+・基本的なCRUD機能
+・ユーザー認証機能(devise)
+・画像アップロード機能(ActiveStrage)
+・いいね機能
+・下書き機能
+・検索機能
+・バリデーション
+・ページネーション
+・レスポンシブ対応
 
 # 開発環境
+・Windows11 + Git Bash
+・言語：HTML、CSS、JavaScript、Ruby
+・フレームワーク：Ruby on Rails
+・JSライブラリ：jQuery
+・データベース：PostgreSQL
