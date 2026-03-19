@@ -40,13 +40,15 @@
     
     <div class="container mt-3">
 
-      <% if notice %> 
-        <p style="color: green;"><%= notice %></p>
+      <% if notice %>
+        <div class="alert alert-success">
+          <%= notice %>
+        </div>
       <% end %>
 
       <% if alert %>
         <div class="alert alert-danger">
-          <p style="color: red;"><%= alert %></p>
+          <%= alert %>
         </div>
       <% end %>
     </div>
