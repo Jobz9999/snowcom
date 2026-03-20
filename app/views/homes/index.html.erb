@@ -3,35 +3,48 @@
 
 <div class="cover d-flex align-items-center justify-content-center text-center">
   <div class="content-box">
+    <p class="eyebrow mb-2">SNOW COMMUNITY PLATFORM</p>
 
     <h1 class="display-4 fw-bold mb-3">snowcom</h1>
+    <p class="tagline mb-4">スノースポーツのスキルアップと、情報のシェア</p>
 
     <% if user_signed_in? %>
 
-      <p class="lead mb-4">
+      <p class="lead mb-4 text-white-50">
         ようこそ、<strong><%= current_user.name %></strong>さん
       </p>
 
-      <div class="d-flex justify-content-center gap-3">
-        <%= link_to "コミュニティを見る", communities_path, class: "btn btn-success px-4" %>
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        <%= link_to "コミュニティを見る", communities_path, class: "btn btn-success btn-lg px-4" %>
         <%= button_to "ログアウト",
           destroy_user_session_path,
           method: :delete,
-          class: "btn btn-danger px-4" %>
+          class: "btn btn-danger btn-lg px-4" %>
       </div>
 
     <% else %>
 
-      <p class="lead mb-4">
-        スノースポーツ好きが集まるコミュニティSNS
-      </p>
-
-      <div class="d-flex justify-content-center gap-3">
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary px-4" %>
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light px-4" %>
+      <div class="d-flex justify-content-center flex-wrap gap-3">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-lg px-4" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light btn-lg px-4" %>
       </div>
 
     <% end %>
+
+    <div class="home-stats mt-5">
+      <div class="stat-item">
+        <span class="stat-value">100+</span>
+        <span class="stat-label">Riders</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">40+</span>
+        <span class="stat-label">Communities</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">365</span>
+        <span class="stat-label">Snow Days</span>
+      </div>
+    </div>
 
   </div>
 </div>
