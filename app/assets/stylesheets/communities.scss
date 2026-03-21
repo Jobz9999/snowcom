@@ -23,6 +23,15 @@
   background-attachment: fixed;
 }
 
+.communities-show .post-author-link {
+  color: #212529;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: #0d6efd;
+  }
+}
+
 .communities-edit {
   background-image: image-url("community-edit.jpg"); 
   background-size: cover;
