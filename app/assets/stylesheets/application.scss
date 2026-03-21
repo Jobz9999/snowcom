@@ -77,3 +77,14 @@ body[class^="users-"] footer {
 .community-card:hover .card-title {
   color: #0d6efd;
 }
+
+/* full_widthページではフラッシュをレイアウト外に固定表示 */
+.flash-overlay {
+  position: fixed;
+  top: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 720px;
+  z-index: 1055;
+}

@@ -38,20 +38,21 @@
       </div>
     </nav>
     
-    <div class="<%= content_for?(:full_width) ? '' : 'container mt-3' %>">
+    <% if notice || alert %>
+      <div class="<%= content_for?(:full_width) ? 'flash-overlay' : 'container mt-3' %>">
+        <% if notice %>
+          <div class="alert alert-success js-auto-dismiss-flash mb-0">
+            <%= notice %>
+          </div>
+        <% end %>
 
-      <% if notice %>
-        <div class="alert alert-success">
-          <%= notice %>
-        </div>
-      <% end %>
-
-      <% if alert %>
-        <div class="alert alert-danger">
-          <%= alert %>
-        </div>
-      <% end %>
-    </div>
+        <% if alert %>
+          <div class="alert alert-danger js-auto-dismiss-flash mb-0">
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
     <main class="<%= content_for?(:full_width) ? '' : 'container mt-4' %>">
       <%= yield %>
