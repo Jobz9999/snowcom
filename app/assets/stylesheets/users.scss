@@ -7,6 +7,63 @@
   background-attachment: fixed;
 }
 
+/* ===== マイページ・プロフィールカード ===== */
+.users-show .user-profile-card__name {
+  color: #142433;
+  letter-spacing: 0.01em;
+}
+
+.users-show .user-profile-card__label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6c7d8f;
+  margin-bottom: 0.5rem;
+}
+
+.users-show .user-profile-card__bio-shell {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(240, 247, 252, 0.9) 100%
+  );
+  border: 1px solid rgba(13, 110, 253, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-left: 3px solid rgba(13, 110, 253, 0.45);
+}
+
+.users-show .user-profile-card__bio-shell--empty {
+  border-left-color: rgba(108, 125, 143, 0.35);
+  background: rgba(248, 249, 251, 0.95);
+}
+
+.users-show .user-profile-card__bio {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #3d4d5c;
+}
+
+.users-show .user-profile-card__bio--placeholder {
+  color: #8b99a8;
+  font-style: italic;
+}
+
+.users-show .user-profile-card__bio:last-child {
+  margin-bottom: 0 !important;
+}
+
+.users-show .user-profile-card__actions {
+  border-top: 1px solid rgba(13, 110, 253, 0.1);
+}
+
+.users-show .user-profile-card__edit {
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(13, 110, 253, 0.28);
+}
 
 .users-edit {
   background-image: url("users-edit.jpg");

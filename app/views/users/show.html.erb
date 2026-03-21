@@ -6,22 +6,34 @@
   <div class="col-lg-4 mb-4">
 
     <!-- プロフィール -->
-    <div class="card shadow-sm mb-4 community-card">
+    <div class="card shadow-sm mb-4 community-card user-profile-card">
       <div class="card-body d-flex flex-column">
+        <h2 class="h6 fw-bold mb-3 px-3 py-2 bg-dark text-white rounded">
+            プロフィール
+        </h2>
 
-        <div class="text-center">
-          <h1 class="h5 fw-bold mb-2"><%= @user.name %></h1>
+        <h1 class="user-profile-card__name h5 fw-bold mb-0">
+          <%= @user.name.presence || "名前未設定" %>
+        </h1>
 
-          <p class="text-muted small">
-            <%= @user.profile.presence || "自己紹介が未設定です" %>
-          </p>
+        <div class="user-profile-card__section mt-3">
+          <span class="user-profile-card__label">自己紹介</span>
+          <% if @user.profile.present? %>
+            <div class="user-profile-card__bio-shell">
+              <%= simple_format(@user.profile, { class: "user-profile-card__bio mb-0" }) %>
+            </div>
+          <% else %>
+            <div class="user-profile-card__bio-shell user-profile-card__bio-shell--empty">
+              <p class="user-profile-card__bio user-profile-card__bio--placeholder mb-0">自己紹介が未設定です</p>
+            </div>
+          <% end %>
         </div>
 
         <% if current_user == @user %>
-          <div class="mt-auto text-end">
-            <%= link_to "プロフィール編集",
+          <div class="user-profile-card__actions mt-auto pt-3">
+            <%= link_to "プロフィールを編集",
                 edit_user_path(@user),
-                class: "btn btn-primary btn-sm" %>
+                class: "btn btn-primary btn-sm rounded-pill px-4 user-profile-card__edit" %>
           </div>
         <% end %>
 
@@ -31,7 +43,9 @@
     <!-- 参加コミュニティ -->
     <div class="card shadow-sm mb-4 community-card">
       <div class="card-body">
-        <h2 class="h6 fw-bold mb-3">参加コミュニティ</h2>
+        <h2 class="h6 fw-bold mb-3 px-3 py-2 bg-dark text-white rounded">
+          参加コミュニティ
+        </h2>
 
         <% if @communities.any? %>
           <% @communities.each do |community| %>
@@ -48,7 +62,9 @@
     <!-- 作成コミュニティ -->
     <div class="card shadow-sm community-card">
       <div class="card-body">
-        <h2 class="h6 fw-bold mb-3">作成コミュニティ</h2>
+        <h2 class="h6 fw-bold mb-3 px-3 py-2 bg-dark text-white rounded">
+          作成コミュニティ
+        </h2>
 
         <% if @my_communities.any? %>
           <% @my_communities.each do |community| %>
@@ -58,7 +74,7 @@
                 <%= link_to community.name, community_path(community), class: "text-decoration-none" %>
               </div>
 
-              <div class="mt-2 d-flex gap-2">
+              <div class="mt-2 d-flex gap-2 justify-content-end">
                 <%= link_to "編集",
                     edit_community_path(community),
                     class: "btn btn-outline-primary btn-sm" %>
