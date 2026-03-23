@@ -1,4 +1,7 @@
 # snowcom
+<p align="center">
+  <img src="./images/favicon.png" width="80">
+</p>
 
 # 概要
 このアプリは、スノースポーツの楽しさを共有できるwebアプリケーションです。ユーザーは、訪れた場所、感想、写真や動画
