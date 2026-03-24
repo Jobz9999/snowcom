@@ -99,7 +99,7 @@
   <!-- 投稿フォーム -->
   <div class="card shadow-sm mb-4 community-card">
     <div class="card-body">
-      <h2 class="h5 fw-bold mb-3">投稿</h2>
+      <h2 class="h5 fw-bold mb-3">Post Form</h2>
 
       <% membership = user_signed_in? ? @community.memberships.find_by(user: current_user) : nil %>
       <% can_post = @community.user == current_user || membership&.approved? %>
@@ -117,7 +117,7 @@
             <%= f.file_field :image, class: "form-control form-control-sm" %>
           </div>
 
-          <%= f.submit '投稿', class: "btn btn-dark" %>
+          <%= f.submit '投稿', class: "btn btn-primary" %>
         <% end %>
       <% else %>
         <div class="alert alert-warning mb-0">
