@@ -14,13 +14,11 @@
   min-height: 100vh;
 }
 
-.communities-show {
-  background-image: image-url("community-show.jpg"); 
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
+.communities-show,
+.devise-sessions-new,
+.devise-registrations-new {
+  background-color: #e6f4ff;
   min-height: 100vh;
-  background-attachment: fixed;
 }
 
 .communities-show .post-author-link {
