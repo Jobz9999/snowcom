@@ -6,10 +6,12 @@ body.home-page .cover {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 100svh;
+  height: auto;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  padding-block: clamp(2.5rem, 6vh, 4.5rem);
   color: #fff;
 }
 
@@ -176,6 +178,11 @@ body.home-page .ranking-empty {
 }
 
 @media (max-width: 767.98px) {
+  body.home-page .cover {
+    background-attachment: scroll;
+    padding-block: 1.5rem 2rem;
+  }
+
   body.home-page .display-4 {
     font-size: clamp(2rem, 11vw, 2.8rem);
   }
@@ -199,5 +206,11 @@ body.home-page .ranking-empty {
     justify-content: start;
     gap: 0.7rem;
     padding-left: 2.75rem;
+  }
+}
+
+@media (max-height: 820px) {
+  body.home-page .cover {
+    align-items: flex-start !important;
   }
 }
