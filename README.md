@@ -1,6 +1,6 @@
 # snowcom
 
-  <img src="C:\Users\shimo\Desktop\snowcom\app\assets\images\favicon.png" width="30%"  alt="ロゴ">
+  <img src="app/assets/images/favicon.png" width="30%" alt="ロゴ">
 
 # 概要
 このアプリは、スノースポーツの楽しさを共有できるwebアプリケーションです。ユーザーは、訪れた場所、感想、写真や動画
