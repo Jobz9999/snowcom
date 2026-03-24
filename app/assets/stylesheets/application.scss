@@ -16,6 +16,83 @@
 
  @import "bootstrap";
 
+.app-navbar {
+  background: linear-gradient(135deg, rgba(10, 15, 28, 0.92), rgba(19, 44, 79, 0.9));
+  box-shadow: 0 8px 24px rgba(9, 15, 28, 0.28);
+  backdrop-filter: blur(6px);
+}
+
+.app-navbar-logo {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.app-navbar-brand-text {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.app-nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.9) !important;
+  transition: color 0.2s ease;
+}
+
+.app-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.25rem;
+  height: 2px;
+  border-radius: 99px;
+  background: #7dd3fc;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.app-nav-link:hover {
+  color: #ffffff !important;
+}
+
+.app-nav-link:hover::after,
+.app-nav-link.active::after {
+  transform: scaleX(1);
+}
+
+.app-nav-btn-outline {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.app-nav-btn-outline:hover {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.app-nav-btn-filled {
+  font-weight: 600;
+  color: #0b233f;
+  background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+  border: none;
+}
+
+.app-nav-btn-filled:hover {
+  color: #0b233f;
+  filter: brightness(0.95);
+}
+
+@media (max-width: 991.98px) {
+  .app-navbar .navbar-nav {
+    padding-top: 0.75rem;
+  }
+
+  .app-navbar .navbar-nav .btn {
+    width: 100%;
+  }
+}
+
  .cover {
   height: 100vh;
   color: white;

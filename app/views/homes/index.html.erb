@@ -6,7 +6,7 @@
     <p class="eyebrow mb-2">SNOW COMMUNITY PLATFORM</p>
 
     <h1 class="display-4 fw-bold mb-3">snowcom</h1>
-    <p class="tagline mb-4">スノースポーツのスキルアップと、情報のシェア</p>
+    <p class="tagline mb-4">~スノースポーツのスキルアップと、情報のシェア~</p>
 
     <% if user_signed_in? %>
 
@@ -33,18 +33,44 @@
 
     <div class="home-stats mt-5">
       <div class="stat-item">
-        <span class="stat-value">100+</span>
+        <span class="stat-value"><%= User.count %>+</span>
         <span class="stat-label">Riders</span>
       </div>
       <div class="stat-item">
-        <span class="stat-value">40+</span>
-        <span class="stat-label">Communities</span>
+        <span class="stat-value"><%= Community.count %>+</span>
+        <span class="stat-label">COMMUNITIES</span>
       </div>
       <div class="stat-item">
-        <span class="stat-value">365</span>
-        <span class="stat-label">Snow Days</span>
+        <span class="stat-value"><%= Post.count %>+</span>
+        <span class="stat-label">POSTS</span>
       </div>
     </div>
+
+    <section class="home-ranking mt-5 text-start">
+      <h2 class="home-ranking-title mb-3">🔥人気コミュニティランキング</h2>
+
+      <% if @popular_communities.any? %>
+        <div class="ranking-list">
+          <% @popular_communities.each.with_index(1) do |community, rank| %>
+            <%= link_to community_path(community), class: "ranking-item text-decoration-none" do %>
+              <span class="ranking-badge"><%= rank %></span>
+              <div class="ranking-main">
+                <p class="ranking-name mb-1"><%= community.name %></p>
+                <p class="ranking-description mb-0">
+                  <%= truncate(community.description.to_s, length: 60) %>
+                </p>
+              </div>
+              <div class="ranking-meta text-end">
+                <span class="ranking-meta-item">投稿 <%= community.posts_count.to_i %></span>
+                <span class="ranking-meta-item">参加 <%= community.members_count.to_i %></span>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="ranking-empty mb-0">まだコミュニティがありません。</p>
+      <% end %>
+    </section>
 
   </div>
 </div>

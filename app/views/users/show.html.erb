@@ -68,13 +68,14 @@
 
         <% if @my_communities.any? %>
           <% @my_communities.each do |community| %>
-            <div class="mb-3 p-2 border rounded">
-
-              <div class="fw-bold">
-                <%= link_to community.name, community_path(community), class: "text-decoration-none" %>
+            <div class="mb-3 p-2 border rounded d-flex align-items-center justify-content-between gap-2">
+              <div class="fw-bold min-w-0 flex-grow-1">
+                <%= link_to community.name,
+                    community_path(community),
+                    class: "text-decoration-none text-truncate d-block" %>
               </div>
 
-              <div class="mt-2 d-flex gap-2 justify-content-end">
+              <div class="d-flex gap-2 flex-shrink-0">
                 <%= link_to "編集",
                     edit_community_path(community),
                     class: "btn btn-outline-primary btn-sm" %>
@@ -86,7 +87,6 @@
                     form: { class: "d-inline" },
                     class: "btn btn-outline-danger btn-sm" %>
               </div>
-
             </div>
           <% end %>
         <% else %>
