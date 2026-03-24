@@ -31,6 +31,15 @@
   }
 }
 
+.communities-show .like-button {
+  text-decoration: none !important;
+}
+
+.communities-show .like-button:hover,
+.communities-show .like-button:focus {
+  text-decoration: none !important;
+}
+
 .communities-edit {
   background-image: image-url("community-edit.jpg"); 
   background-size: cover;

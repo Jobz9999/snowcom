@@ -153,13 +153,13 @@
               <%= button_to "♥",
                   community_post_like_path(@community, post),
                   method: :delete,
-                  class: "btn btn-link p-0 text-danger",
+                  class: "btn btn-link p-0 text-danger like-button",
                   form: { class: "d-inline" } %>
             <% else %>
               <%= button_to "♡",
                   community_post_like_path(@community, post),
                   method: :post,
-                  class: "btn btn-link p-0 text-muted",
+                  class: "btn btn-link p-0 text-muted like-button",
                   form: { class: "d-inline" } %>
             <% end %>
           <% end %>
