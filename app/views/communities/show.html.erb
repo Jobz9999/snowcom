@@ -99,7 +99,7 @@
   <!-- 投稿フォーム -->
   <div class="card shadow-sm mb-4 community-card">
     <div class="card-body">
-      <h2 class="h5 fw-bold mb-3">Post Form</h2>
+      <h2 class="h5 fw-bold mb-3">投稿フォーム</h2>
 
       <% membership = user_signed_in? ? @community.memberships.find_by(user: current_user) : nil %>
       <% can_post = @community.user == current_user || membership&.approved? %>
