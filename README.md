@@ -40,12 +40,21 @@
 ・他のユーザーからアドバイスをもらいたいとき<br>
 
 # 利用方法
-・ユーザー新規登録を行う、またはログインする<br>
-<img src="app/assets/images/log-in.png" width="50%" alt="ロゴ">
-<img src="app/assets/images/new-registration.png" width="50%" alt="ロゴ">
-・コミュニティ参加するor作成する<br>
-<img src="app/assets/images/join.png" width="50%" alt="ロゴ">
-<img src="app/assets/images/new-com.png" width="50%" alt="ロゴ">
+<p>
+  ・ユーザー新規登録を行う、またはログインする<br>
+</p>
+<p align="center">
+  <img src="app/assets/images/log-in.png" width="45%" alt="ログイン">
+  <img src="app/assets/images/new-registration.png" width="45%" alt="新規登録">
+</p>
+<p>
+  ・コミュニティに参加する or 作成する<br>
+</p>
+
+<p align="center">
+  <img src="./app/assets/images/join.png" width="45%" alt="コミュニティ参加">
+  <img src="./app/assets/images/new-com.png" width="45%" alt="コミュニティ作成">
+</p>
 ・コミュニティ内でいった場所や気になったことなどを投稿<br>
 <img src="app/assets/images/post.png" width="100%" alt="ロゴ">
 ・他のユーザーの投稿を閲覧し、気に入った投稿に「いいね」をする<br>
