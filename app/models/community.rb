@@ -5,6 +5,10 @@ class Community < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :members, through: :memberships, source: :user
 
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :description, length: { maximum: 300 }, allow_blank: true
+  validates :approval_required, inclusion: { in: [true, false] }
+
   after_create :join_owner!
 
   private
