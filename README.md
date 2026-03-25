@@ -44,14 +44,14 @@
   ・ユーザー新規登録を行う、またはログインする<br>
 </p>
 <p align="center">
-  <img src="app/assets/images/log-new.png" width="100%" >
+  <img src="app/assets/images/log-new.jpg" width="100%" >
 </p>
 <p>
   ・コミュニティに参加する or 作成する<br>
 </p>
 
 <p align="center">
-  <img src="./app/assets/images/join.png" width="100%" alt="コミュニティ参加">
+  <img src="./app/assets/images/join.jpg" width="100%" alt="コミュニティ参加">
 </p>
 ・コミュニティ内でいった場所や気になったことなどを投稿<br>
 <img src="app/assets/images/post.png" width="100%" alt="ロゴ">
