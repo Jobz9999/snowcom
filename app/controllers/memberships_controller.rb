@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_community
-  before_action :require_community_owner!, only: [:approve, :reject]
+  before_action :require_community_owner!, only: [:approve, :reject, :expel]
 
   def create
     membership = @community.memberships.find_or_initialize_by(user: current_user)
@@ -37,6 +37,24 @@ class MembershipsController < ApplicationController
     membership = @community.memberships.find(params[:id])
     membership.destroy!
     redirect_to @community, notice: '参加リクエストを拒否しました'
+  end
+
+  def expel
+    membership = @community.memberships.find(params[:id])
+
+    if membership.user_id == @community.user_id
+      redirect_to @community, alert: '作成者を追放することはできません'
+      return
+    end
+
+    unless membership.approved?
+      redirect_to @community, alert: '承認済みメンバーのみ追放できます'
+      return
+    end
+
+    expelled_name = membership.user.name
+    membership.destroy!
+    redirect_to @community, notice: "#{expelled_name}を追放しました"
   end
 
   private
