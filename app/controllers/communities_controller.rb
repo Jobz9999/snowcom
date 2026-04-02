@@ -21,6 +21,14 @@ class CommunitiesController < ApplicationController
         if @community.user == current_user && @community.approval_required?
           @pending_memberships = @community.memberships.pending.includes(:user).order(created_at: :asc)
         end
+
+        if @community.user == current_user
+          @approved_member_memberships = @community.memberships
+            .approved
+            .where.not(user_id: @community.user_id)
+            .includes(:user)
+            .order(created_at: :asc)
+        end
     end
     
     def new # コミュニティの新規作成ページ

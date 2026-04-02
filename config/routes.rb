@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       member do
         patch :approve
         delete :reject
+        delete :expel
       end
     end
   end

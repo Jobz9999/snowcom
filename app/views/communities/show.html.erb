@@ -96,6 +96,33 @@
     </div>
   <% end %>
 
+  <!-- メンバー管理（作成者のみ） -->
+  <% if @community.user == current_user %>
+    <div class="card shadow-sm mb-4 community-card">
+      <div class="card-body">
+        <h2 class="h5 fw-bold mb-3">メンバー</h2>
+
+        <% if @approved_member_memberships.present? %>
+          <div class="list-group">
+            <% @approved_member_memberships.each do |membership| %>
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <strong><%= link_to membership.user.name, user_path(membership.user), class: "text-decoration-none" %></strong>
+
+                <%= button_to "追放",
+                    expel_community_membership_path(@community, membership),
+                    method: :delete,
+                    form: { data: { turbo_confirm: "#{membership.user.name}を追放しますか？" } },
+                    class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="text-muted mb-0">承認済みの他メンバーはいません。</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
   <!-- 投稿フォーム -->
   <div class="card shadow-sm mb-4 community-card">
     <div class="card-body">
