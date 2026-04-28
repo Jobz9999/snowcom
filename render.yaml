@@ -1,6 +1,6 @@
 databases:
   - name: snowcom-db
-    databaseName: snowcom_production
+    databaseName: snowcom_production_tf84
     user: snowcom_user
     region: virginia
 
